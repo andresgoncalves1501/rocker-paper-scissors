@@ -1,0 +1,207 @@
+// variables
+$breakpoints: (
+  phone: 640px,
+  tablet: 768px,
+  laptop: 1024px,
+  desktop: 1440px,
+  desktop-lg: 1800px,
+) !default; // end variables
+
+// mixins
+@mixin responsive($query, $value) {
+  @media ($query: $value) {
+    @content;
+  }
+} // end mixins
+
+// app
+.app {
+  align-items: center;
+  background-color: #242424;
+  color: #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  font-family: sans-serif;
+  height: 100vh;
+  justify-content: center;
+  position: relative;
+  width: 100vw;
+
+  // h1
+  h1 {
+    font-size: 36px;
+    margin-bottom: 24px;
+
+    @include responsive(max-width, map-get($breakpoints, laptop)) {
+      font-size: 30px;
+    }
+  } // end h1
+
+  // h2
+  h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 16px;
+  } // end h2
+
+  // h4
+  h4 {
+    font-size: 20px;
+    margin-bottom: 12px;
+  } // end h4
+
+  // h6
+  h6 {
+    font-size: 16px;
+    margin-bottom: 12px;
+
+    &:last-child {
+      margin-bottom: 24px;
+    }
+  } // end h6
+
+  // button on corner
+  .btn-corner {
+    border: 1px solid #f0f0f0;
+    border-radius: 50%;
+    color: #f0f0f0;
+    cursor: pointer;
+    margin-bottom: 24px;
+    margin-left: auto;
+    margin-right: 15%;
+    padding: 3px 6px;
+  } // button on corner
+
+  // scoreboard
+  ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0px 15%;
+    width: calc(100% - 30%);
+
+    // player/pc score
+    li {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      // player/pc score
+      h6 {
+        margin-bottom: 64px;
+      } // end player/pc move
+
+      // player/pc move
+      img {
+        height: 240px;
+        margin-bottom: 64px;
+        width: auto;
+
+        @include responsive(max-width, map-get($breakpoints, laptop)) {
+          height: 100px;
+        }
+      } // end player/pc move
+    } // end player/pc score
+  } // end scoreboard
+
+  // player controllers
+  .controller {
+    display: flex;
+    flex-direction: row;
+
+    // controller button
+    button {
+      background: #e6e6e6;
+      border: none;
+      border-radius: 12px;
+      color: #242424;
+      cursor: pointer;
+      margin-right: 24px;
+      outline: none;
+      padding: 12px 16px;
+
+      &:last-child {
+        margin-right: 0px;
+      }
+    } // end controller button
+  } // end player controllers
+
+  .modal-fade-enter,
+  .modal-fade-leave-active {
+    opacity: 0;
+  }
+
+  .modal-fade-enter-active,
+  .modal-fade-leave-active {
+    transition: opacity 0.5s ease;
+  }
+
+  // modal backdrop
+  .modal-backdrop {
+    align-items: center;
+    background-color: rgba(#242424, 0.7);
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    left: 0px;
+    position: absolute;
+    top: 0px;
+    width: 100vw;
+
+    // modal
+    .modal {
+      align-items: center;
+      background-color: #1b1b1b;
+      border-radius: 6px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 50%;
+      min-width: 50%;
+      overflow-x: auto;
+      position: relative;
+
+      @include responsive(max-width, map-get($breakpoints, laptop)) {
+        min-height: 75%;
+        min-width: 75%;
+      }
+
+      // modal corner button
+      .btn-corner {
+        // margin-top: 24px;
+        margin-top: 24px;
+        padding: 4px 6px;
+      } // end modal corner button
+
+      // modal body
+      .modal-body {
+        display: flex;
+        flex-direction: column;
+        margin: 0px 15%;
+
+        @include responsive(max-width, map-get($breakpoints, laptop)) {
+          margin: 0 10%;
+        }
+
+        // modal h1
+        h1 {
+          margin-left: auto;
+          margin-right: auto;
+        } // end modal h1
+
+        // modal button
+        button {
+          background: #e6e6e6;
+          border: none;
+          border-radius: 12px;
+          cursor: pointer;
+          margin: 36px auto 24px auto;
+          outline: none;
+          padding: 12px 16px;
+          width: 180px;
+        } // end modal button
+      } // end modal body
+    } // end modal backdrop
+  } // end modal backdrop
+}
