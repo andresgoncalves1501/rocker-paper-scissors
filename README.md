@@ -8,7 +8,7 @@ npm install
 ### Compiles and hot-reloads for development with Electron
 ```
 npm run electron:serve
-
+```
 
 ### Compiles and hot-reloads for development
 ```
